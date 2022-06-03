@@ -1,0 +1,10 @@
+SELECT "direccion","barrio","ciudad","cp" FROM "Tiendas"
+WHERE Lower(direccion) like 'gorriti%' or Lower(barrio) like 'palermo' or Lower(ciudad) like 'f' ; // busqueda
+
+SELECT "nombreTienda", "direccion", "apertura", "cierre", d."nombre", "estrellas", "comentario", "fecha", u."nombre", u."apellido"  FROM "Tiendas" t
+LEFT JOIN "horarios" h ON t."idTienda" = h."fkTienda"
+LEFT JOIN "dias" d ON d."idDia" = h."fkDia"
+LEFT JOIN "Resenias" r ON t."idTienda" = r."fkTienda"
+LEFT JOIN "usuarios" u ON u."idUsuarios"=r."fkUsuario"
+;
+
