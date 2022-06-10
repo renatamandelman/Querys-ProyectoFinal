@@ -1,10 +1,27 @@
-SELECT "direccion","barrio","ciudad","cp" FROM "Tiendas"
-WHERE Lower(direccion) like 'gorriti%' or Lower(barrio) like 'palermo' or Lower(ciudad) like 'f' ; // busqueda
+/* querys para sql*/
+INSERT INTO public.roles(
+	 "nombre")
+	VALUES ('proveedor'),
+	('cliente'); /* insertar campos en tabla roles*/
+	
+	
+/* Querys para backend*/
 
+/* Registro insertar*/
+INSERT INTO public.usuarios(
+	 "nombre", "apellido", "mail", "contraseinia", "telefono", "fechNac", "ultimaDireccion", "fkRol", "username")
+	VALUES (@nombre, @apellido, @mail, @contrasenia, @telefono, @fechNac, @ultimaDireccion, @fkRol, @username); 
+/*registro tienda*/
+INSERT INTO public."Tiendas"(
+	 "nombreTitular", "apellidoTitular", "DNITitular", "mailInterno", "telefonoInterno", "razonSocial", "CUIT", "nombreTienda", direccion, ciudad, cp, "mailPublico", "telefonoPublico", logo, portada, "imagenCarousel", "imagenCarousel2", "imagenCarousel3", "imagenCarousel4", descripcion, seguridad, "24hs", "tipoLocker", precio, descuento, barrio)
+	VALUES ( @nombreTitular, @apellidoTitular,@DNITitular,  @mailInterno, @telefonoInterno, @razonSocial,@CUIT, @nombreTienda, @direccion, @ciudad, @cp, @mailPublico, @telefonoPublico,@logo, @portada, @imagenCarousel, @imagenCarousel2, @imagenCarousel3, @imagenCarousel4,@descripcion, @seguridad, @24hs ,@tipoLocker, @precio, @descuento,@barrio);
+
+ /* Locker detalle  busqueda*/ 
 SELECT "nombreTienda", "direccion", "apertura", "cierre", d."nombre", "estrellas", "comentario", "fecha", u."nombre", u."apellido"  FROM "Tiendas" t
 LEFT JOIN "horarios" h ON t."idTienda" = h."fkTienda"
 LEFT JOIN "dias" d ON d."idDia" = h."fkDia"
 LEFT JOIN "Resenias" r ON t."idTienda" = r."fkTienda"
-LEFT JOIN "usuarios" u ON u."idUsuarios"=r."fkUsuario"
-;
-
+LEFT JOIN "usuarios" u ON u."idUsuarios"=r."fkUsuario";
+ /*busqueda*/
+SELECT "direccion","barrio","ciudad","cp" FROM "Tiendas"
+WHERE Lower(direccion) like @direccion or Lower(barrio) like @barrio or Lower(ciudad) like @ciudad ;
