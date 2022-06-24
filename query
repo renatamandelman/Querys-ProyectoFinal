@@ -19,8 +19,8 @@ INSERT INTO public.horarios(
 	"idHorario", "fkTienda", "fkDia", apertura, cierre)
 	VALUES ( @idHorario, @fkTienda,  @fkDia,@apertura,@cierre);
 INSERT INTO public.imagenes(
-	 "idImagen", imagen1, imagen2, imagen3, imagen4, logo)
-	VALUES (@idIamgen,@imagen1, @imagen2, @iamgen3, @imagen4, @logo);
+	"idImagen", imagen1, imagen2, imagen3, imagen4, logo, fk_tienda)
+	VALUES (@idIamgen,@imagen1, @imagen2, @iamgen3, @imagen4, @logo,@fk_tienda);
 	
  /* Locker detalle  busqueda*/ 
 SELECT "nombreTienda", "direccion", "apertura", "cierre", d."nombre", "estrellas", "comentario", "fecha", u."nombre", u."apellido"  FROM "Tiendas" t
