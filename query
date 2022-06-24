@@ -15,7 +15,10 @@ INSERT INTO public.usuarios(
 INSERT INTO public."Tiendas"(
 	 "nombreTitular", "apellidoTitular", "DNITitular", "mailInterno", "telefonoInterno", "razonSocial", "CUIT", "nombreTienda", direccion, ciudad, cp, "mailPublico", "telefonoPublico", logo, portada, "imagenCarousel", "imagenCarousel2", "imagenCarousel3", "imagenCarousel4", descripcion, seguridad, "24hs", "tipoLocker", precio, descuento, barrio)
 	VALUES ( @nombreTitular, @apellidoTitular,@DNITitular,  @mailInterno, @telefonoInterno, @razonSocial,@CUIT, @nombreTienda, @direccion, @ciudad, @cp, @mailPublico, @telefonoPublico,@logo, @portada, @imagenCarousel, @imagenCarousel2, @imagenCarousel3, @imagenCarousel4,@descripcion, @seguridad, @24hs ,@tipoLocker, @precio, @descuento,@barrio);
-
+INSERT INTO public.horarios(
+	"idHorario", "fkTienda", "fkDia", apertura, cierre)
+	VALUES ( @idHorario, @fkTienda,  @fkDia,@apertura,@cierre);
+	
  /* Locker detalle  busqueda*/ 
 SELECT "nombreTienda", "direccion", "apertura", "cierre", d."nombre", "estrellas", "comentario", "fecha", u."nombre", u."apellido"  FROM "Tiendas" t
 LEFT JOIN "horarios" h ON t."idTienda" = h."fkTienda"
@@ -25,3 +28,4 @@ LEFT JOIN "usuarios" u ON u."idUsuarios"=r."fkUsuario";
  /*busqueda*/
 SELECT "direccion","barrio","ciudad","cp" FROM "Tiendas"
 WHERE Lower(direccion) like @direccion or Lower(barrio) like @barrio or Lower(ciudad) like @ciudad ;
+
