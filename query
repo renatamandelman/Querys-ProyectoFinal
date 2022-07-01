@@ -14,8 +14,7 @@ INSERT INTO public.usuarios(
 /*registro tienda*/
 INSERT INTO public."Tiendas"(
 	nombre_titular, apellido_titular, dni_titular, mail_interno, telefono_interno, razon_social, cuit, nombre_tienda, direccion, ciudad, cp, mail_publico, telefono_publico, descripcion, seguridad, "24hs", tipo_locker, precio, descuento, barrio, fk_usuario, fk_horario, fk_imagen)
-	VALUES (@nombre_titular, @apellido_titular, @dni_titular, @mail_interno, @telefono_interno, @razon_social, @cuit, @nombre_tienda, @direccion, @ciudad, @cp, @mail_publico, @telefono_publico, @descripcion, @seguridad, @24hs, @tipo_locker, @precio, @descuento, @barrio, @fk_usuario, @fk_horario, @fk_imagen);
-    
+	VALUES (@nombre_titular, @apellido_titular, @dni_titular, @mail_interno, @telefono_interno, @razon_social, @cuit, @nombre_tienda, @direccion, @ciudad, @cp, @mail_publico, @telefono_publico, @descripcion, @seguridad, @24hs, @tipo_locker, @precio, @descuento, @barrio, @fk_usuario, @fk_horario, @fk_imagen); SELECT "idTienda" FROM public.tiendas WHERE "cuit"=@cuit;
 INSERT INTO public.horarios(
 	"idHorario", "fkTienda", "fkDia", apertura, cierre)
 	VALUES ( @idHorario, @fkTienda,  @fkDia,@apertura,@cierre);
