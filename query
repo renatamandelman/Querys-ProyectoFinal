@@ -36,4 +36,5 @@ WHERE Lower(direccion) like @direccion or Lower(barrio) like @barrio or Lower(ci
 /* Inicio sesion */
 SELECT contrasenia, username FROM public.usuarios
 WHERE contrasenia=@contrasenia AND username=@username;
-
+/* Codigo Empresa */
+SELECT "idTienda" FROM public.tiendas WHERE "idTienda"=@idTienda;
