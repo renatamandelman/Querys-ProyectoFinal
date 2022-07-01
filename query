@@ -33,3 +33,7 @@ LEFT JOIN "usuarios" u ON u."idUsuarios"=r."fkUsuario";
 SELECT "direccion","barrio","ciudad","cp" FROM "Tiendas"
 WHERE Lower(direccion) like @direccion or Lower(barrio) like @barrio or Lower(ciudad) like @ciudad ;
 
+/* Inicio sesion */
+SELECT contrasenia, username FROM public.usuarios
+WHERE contrasenia=@contrasenia AND username=@username;
+
