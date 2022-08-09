@@ -14,7 +14,7 @@ INSERT INTO public.usuarios(
 /*registro tienda*/
 INSERT INTO public."Tiendas"(
 	nombre_titular, apellido_titular, dni_titular, mail_interno, telefono_interno, razon_social, cuit, nombre_tienda, direccion, ciudad, cp, mail_publico, telefono_publico, descripcion, seguridad, "24hs", tipo_locker, precio, descuento, barrio, fk_usuario, fk_horario, fk_imagen)
-	VALUES (@nombre_titular, @apellido_titular, @dni_titular, @mail_interno, @telefono_interno, @razon_social, @cuit, @nombre_tienda, @direccion, @ciudad, @cp, @mail_publico, @telefono_publico, @descripcion, @seguridad, @24hs, @tipo_locker, @precio, @descuento, @barrio, @fk_usuario, @fk_horario, @fk_imagen); SELECT "idTienda" FROM public.tiendas WHERE "cuit"=@cuit;
+	VALUES (@nombre_titular, @apellido_titular, @dni_titular, @mail_interno, @telefono_interno, @razon_social, @cuit, @nombre_tienda, @direccion, @ciudad, @cp, @mail_publico, @telefono_publico, @descripcion, @seguridad, @24hs, @tipo_locker, @precio, @descuento, @barrio, @fk_usuario, @fk_horario, @fk_imagen); 
 INSERT INTO public.horarios(
 	"idHorario", "fkTienda", "fkDia", apertura, cierre)
 	VALUES ( @idHorario, @fkTienda,  @fkDia,@apertura,@cierre);
@@ -22,7 +22,8 @@ INSERT INTO public.imagenes(
 	"idImagen", imagen1, imagen2, imagen3, imagen4, logo, fk_tienda,portada)
 	VALUES (@idIamgen,@imagen1, @imagen2, @iamgen3, @imagen4, @logo,@fk_tienda,@portada);
 SELECT "idTienda" FROM public.tiendas WHERE "cuit"=@cuit;
-	
+/* Codigo Empresa */
+SELECT "idTienda" FROM public.tiendas WHERE "idTienda"=@idTienda;	
  /* Locker detalle  busqueda*/ 
 SELECT "nombreTienda", "direccion", "apertura", "cierre", d."nombre", "estrellas", "comentario", "fecha", u."nombre", u."apellido"  FROM "Tiendas" t
 LEFT JOIN "horarios" h ON t."idTienda" = h."fkTienda"
@@ -36,5 +37,4 @@ WHERE Lower(direccion) like @direccion or Lower(barrio) like @barrio or Lower(ci
 /* Inicio sesion */
 SELECT contrasenia, username FROM public.usuarios
 WHERE contrasenia=@contrasenia AND username=@username;
-/* Codigo Empresa */
-SELECT "idTienda" FROM public.tiendas WHERE "idTienda"=@idTienda;
+
