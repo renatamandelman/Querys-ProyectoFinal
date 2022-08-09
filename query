@@ -24,6 +24,10 @@ INSERT INTO public.imagenes(
 SELECT "idTienda" FROM public.tiendas WHERE "cuit"=@cuit;
 /* Codigo Empresa */
 SELECT "idTienda" FROM public.tiendas WHERE "idTienda"=@idTienda;	
+/* get by id providr*/
+SELECT "idTienda", nombre_titular, apellido_titular, dni_titular, mail_interno, telefono_interno, razon_social, cuit, nombre_tienda, direccion, ciudad, cp, mail_publico, telefono_publico, descripcion, seguridad, "24hs", tipo_locker, precio, descuento, barrio, fk_usuario
+	FROM public.tiendas WHERE "idTienda" = @idTienda;
+	
  /* Locker detalle  busqueda*/ 
 SELECT "nombreTienda", "direccion", "apertura", "cierre", d."nombre", "estrellas", "comentario", "fecha", u."nombre", u."apellido"  FROM "Tiendas" t
 LEFT JOIN "horarios" h ON t."idTienda" = h."fkTienda"
