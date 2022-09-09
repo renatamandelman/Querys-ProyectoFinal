@@ -36,8 +36,8 @@ LEFT JOIN "horarios" h ON t."idTienda" = h."fkTienda"
 LEFT JOIN "dias" d ON d."idDia" = h."fkDia"
 LEFT JOIN "Resenias" r ON t."idTienda" = r."fkTienda"
 LEFT JOIN "usuarios" u ON u."idUsuarios"=r."fkUsuario";
- /*busqueda*/
-SELECT "direccion","barrio","ciudad","cp" FROM "Tiendas"
+ /*busqueda mapa  */
+SELECT * FROM "Tiendas"
 WHERE Lower(direccion) like @direccion or Lower(barrio) like @barrio or Lower(ciudad) like @ciudad ;
 
 /* Inicio sesion */
